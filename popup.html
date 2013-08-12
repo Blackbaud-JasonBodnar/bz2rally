@@ -1,0 +1,44 @@
+<!doctype html>
+<html>
+   <head>
+    <title>BZ-2-Rally</title>
+    <style>
+      body {
+        min-width: 750px;
+        overflow: hidden;
+      }
+    </style>
+
+    <!--
+      - JavaScript and HTML must be in separate files: see our Content Security
+      - Policy documentation[1] for details and explanation.
+      -
+      - [1]: http://developer.chrome.com/extensions/contentSecurityPolicy.html
+     -->
+    <script src="jquery.min.js"></script>
+    <script src="bz2rally.js"></script>
+  </head>
+  <body>
+	<div id="loading">Loading Bugzilla & Rally Data</div>
+	<div id="loaded" style="display: none">
+		<form id="createDefectForm">  
+			<div id="projects" title="Create Rally Defect From Bug">
+				Select a project:
+				<select name="projects" id="projects-select"></select>
+			</div>
+			<div id="bugzilla info">
+				<span>Defect Name: </span><span><input type="text" size="60" id="defect_name" name="defect_name"/></span>
+			</div>
+			<div id="buttons">
+				<input id="createDefectSubmit" type="submit" value="Create">
+			</div>
+		</form>
+	</div>
+	<div id="success" style="display: none">
+	</div>
+	<div id="error" style="display: none">
+	</div>
+  </body>
+</html>
+
+

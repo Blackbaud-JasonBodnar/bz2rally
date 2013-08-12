@@ -1,0 +1,32 @@
+{
+	"manifest_version": 2,
+
+	"name": "BZ-2-Rally",
+	"description": "This extension creates a Rally Defect from a Bugzilla Bug.",
+	"version": "1.0",
+
+	"options_page": "options.html",
+
+	"permissions": 
+	[
+		"https://rally1.rallydev.com/",
+		"storage"
+	],
+	"page_action": 
+	{
+		"default_icon": "icon.png",
+		"default_popup": "popup.html"
+	},
+	"background":
+	{
+		"scripts": ["eventPage.js"],
+		"persistent": false
+	},
+	"content_scripts":
+	[
+		{
+			"matches": ["http://bugzilla.corp.convio.com/show_bug.cgi?id=*"],
+			"js": ["jquery.min.js", "content.js"]
+		}
+	]
+}
