@@ -6,6 +6,8 @@ function saveOptions(event)
 	event.preventDefault(true);
 	localStorage["topLevelProjectId"] = $("#topLevelProjectId").val();
 	localStorage["defaultSelectedProjectId"] = $("#defaultSelectedProjectId").val();
+	localStorage["rallyUsername"] = $("#rallyUsername").val();
+	localStorage["rallyPassword"] = $("#rallyPassword").val();
 
 	// Update status to let user know options were saved.
 	var status = $("#status");
@@ -18,9 +20,12 @@ function saveOptions(event)
 
 // Restores select box state to saved value from localStorage.
 function restoreOptions() 
-{
-	$("#topLevelProjectId").val(localStorage["topLevelProjectId"]);
+{	
+	var topLevelProjectId = localStorage["topLevelProjectId"] == null ? 129886306 : localStorage["topLevelProjectId"];
+	$("#topLevelProjectId").val(topLevelProjectId);
 	$("#defaultSelectedProjectId").val(localStorage["defaultSelectedProjectId"]);
+	$("#rallyUsername").val(localStorage["rallyUsername"]);
+	$("#rallyPassword").val(localStorage["rallyPassword"]);
 	$("#save").click(saveOptions);
 }
 $(document).ready(restoreOptions);

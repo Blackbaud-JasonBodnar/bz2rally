@@ -88,12 +88,14 @@ document.addEventListener('DOMContentLoaded', function ()
 	setTimeout(function()
 	{
 		var securityToken = '';
+		var authHeaderValue = window.btoa(localStorage["rallyUsername"] + ":" + localStorage["rallyPassword"]);
 		$.ajax(
 		{
 			type: "get",
 			url: "https://rally1.rallydev.com/slm/webservice/v2.0/security/authorize",
 			dataType: "json",
 			async: false,
+			headers: {"Authorization": "Basic " + authHeaderValue},
 			success: function(data, code, jqXHR)
 			{
 				securityToken = data.OperationResult.SecurityToken;
@@ -102,7 +104,8 @@ document.addEventListener('DOMContentLoaded', function ()
 		var bugName = localStorage["bugName"];
 		var bugUrl = localStorage["bugUrl"];
 		$("#defect_name").val(bugName);
-		getChildren(localStorage["topLevelProjectId"], 0);
+		var topLevelProjectId = localStorage["topLevelProjectId"] == null ? 129886306 : localStorage["topLevelProjectId"];
+		getChildren(topLevelProjectId, 0);
 		$("#projects-select").val(localStorage["defaultSelectedProjectId"]);
 		$("#createDefectForm").submit(function () {createDefect(bugName, bugUrl, securityToken);});
 		$("#loading").hide();
