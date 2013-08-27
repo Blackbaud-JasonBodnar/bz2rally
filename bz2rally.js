@@ -49,7 +49,7 @@ function createDefect(bugName, bugUrl, securityToken)
 		"Defect":
 		{
 			"Name": bugName,
-			"Description": bugUrl,
+			"Description": '<a href="' + bugUrl + '">' + bugUrl + '</a>',
 			"Project": projectId
 		}
 	};
@@ -107,7 +107,7 @@ document.addEventListener('DOMContentLoaded', function ()
 		var topLevelProjectId = localStorage["topLevelProjectId"] == null ? 129886306 : localStorage["topLevelProjectId"];
 		getChildren(topLevelProjectId, 0);
 		$("#projects-select").val(localStorage["defaultSelectedProjectId"]);
-		$("#createDefectForm").submit(function () {createDefect(bugName, bugUrl, securityToken);});
+		$("#createDefectForm").submit(function () {createDefect($("#defect_name").val(), bugUrl, securityToken);});
 		$("#loading").hide();
 		$("#loaded").show();
 	}, 1);

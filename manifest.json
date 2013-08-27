@@ -3,7 +3,7 @@
 
 	"name": "BZ-2-Rally",
 	"description": "This extension creates a Rally Defect from a Bugzilla Bug.",
-	"version": "1.0.0",
+	"version": "1.0.3",
 
 	"options_page": "options.html",
 

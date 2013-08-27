@@ -1,6 +1,6 @@
 var data =
 {
-	"bugName": $("#short_desc_nonedit_display").text(),
+	"bugName": document.title,
 	"bugUrl": location.href
 };
 
